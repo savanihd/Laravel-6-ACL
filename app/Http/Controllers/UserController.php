@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Spatie\Permission\Models\Role;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
 
 
 class UserController extends Controller
@@ -119,7 +120,7 @@ class UserController extends Controller
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{
-            $input = array_except($input,array('password'));    
+            $input = Arr::except($input,array('password'));    
         }
 
 
